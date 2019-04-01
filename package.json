@@ -1,0 +1,58 @@
+{
+  "name": "machinepack-mssql",
+  "version": "1.0.0-rc.1",
+  "description": "Structured Node.js bindings for MSSQL.",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
+    "fasttest": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
+    "fasttest-debug": "node --inspect-brk=9229 ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
+    "pretest": "npm run lint",
+    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0",
+    "docker": "docker-compose run adapter bash"
+  },
+  "keywords": [
+    "mssql",
+    "driver",
+    "waterline",
+    "sails",
+    "machines",
+    "machinepack"
+  ],
+  "author": "Dave Preston",
+  "license": "MIT",
+  "dependencies": {
+    "@sailshq/lodash": "^3.10.2",
+    "debug": "2.6.9",
+    "machine": "^15.0.0",
+    "mssql": "^4.3.2",
+    "waterline-sql-builder": "^1.0.0-2"
+  },
+  "devDependencies": {
+    "bluebird": "^3.5.3",
+    "eslint": "4.19.1",
+    "mocha": "3.0.2",
+    "moment": "^2.24.0"
+  },
+  "machinepack": {
+    "friendlyName": "MSSQL",
+    "machineDir": "lib/",
+    "machines": [
+      "get-connection",
+      "release-connection",
+      "send-native-query",
+      "parse-native-query-result",
+      "parse-native-query-error",
+      "begin-transaction",
+      "commit-transaction",
+      "rollback-transaction",
+      "compile-statement",
+      "create-manager",
+      "destroy-manager"
+    ],
+    "implements": {
+      "connectable": "1.0",
+      "queryable": "1.0",
+      "transactional": "1.0"
+    }
+  }
+}
