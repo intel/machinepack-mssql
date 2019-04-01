@@ -18,6 +18,7 @@ node_modules
 npm-debug.log
 .node_history
 package-lock.json
+.npmrc
 
 ############################
 # editor & OS files

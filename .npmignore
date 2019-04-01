@@ -33,3 +33,4 @@ nbproject
 .tmp
 dump.rdb
 .vscode
+.npmrc
