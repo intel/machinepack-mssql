@@ -1,6 +1,6 @@
 {
   "name": "machinepack-mssql",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.1.1",
   "description": "Structured Node.js bindings for MSSQL.",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
@@ -54,5 +54,9 @@
       "queryable": "1.0",
       "transactional": "1.0"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intel/machinepack-mssql.git"
   }
 }
