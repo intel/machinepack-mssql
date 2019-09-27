@@ -35,5 +35,27 @@ describe('Connectable ::', function () {
           return done();
         });
     });
+
+    it('should fail sync execution', function (done) {
+      try {
+        Pack.createManager({
+          connectionString: config.connectionString.match(/mssql:\/\/(.*)/)[1]
+        }).execSync();
+      } catch(unused) {
+        return done();
+      }
+      return done(new Error('Sync execution of createManager should fail'));
+    });
+
+    it('should fail if connect fails', function (done) {
+      Pack.createManager({
+        connectionString: 'mssql://notauser:notapassword@localhost:1433/sails-test'
+      }).exec(function (err) {
+        if (err) {
+          return done();
+        }
+        return done(new Error('No error reported'));
+      });
+    });
   });
 });
