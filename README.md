@@ -14,10 +14,12 @@ Structured Node.js bindings for MSSQL.
 $ npm install machinepack-mssql
 ```
 
-
 ## Usage
 
-For the latest usage documentation, version information, and test status of this module, see <a href="http://node-machine.org/machinepack-mssql" title="Structured Node.js bindings for MSSQL. (for node.js)">http://node-machine.org/machinepack-mssql</a>.  The generated manpages for each machine contain a complete reference of all expected inputs, possible exit states, and example return values.
+For the latest usage documentation, version information, and test status of this module, 
+see <a href="http://node-machine.org/machinepack-mssql" title="Structured Node.js bindings for MSSQL. (for node.js)">http://node-machine.org/machinepack-mssql</a>.  
+The generated manpages for each machine contain a complete reference of all expected inputs, possible exit states, 
+and example return values.
 
 
 ## Help
@@ -25,17 +27,19 @@ For the latest usage documentation, version information, and test status of this
 For more examples, or if you get stuck or have questions, click [here](http://sailsjs.com/support).
 
 
-## Bugs &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-mssql.svg)](http://npmjs.com/package/machinepack-mssql)
+## Bugs &nbsp; 
 
-To report a bug, add an [issue](https://github.com/intel/machinepack-mssql/issues) in github.
+To report a bug, add an [issue](https://github.com/vijaykonnackal/machinepack-mssql/issues) in github.
 
 ## Acknowledgements
 
-This module is largely a port of the [machinepack-mysql](https://github.com/sailshq/machinepack-mysql) module. Thanks to the folks at sailshq for all they do!
+This module is largely a port of the [machinepack-postgresql](https://github.com/sailshq/machinepack-postgresql) module. 
+Thanks to the folks at sailshq for all they do!
+
+The work done by Dave Preston [machinepack-mssql](https://github.com/intel/machinepack-mssql) has been used extensively  in this repo.
 
 ## License
 
 MIT
 
 This package is free and open-source under the MIT License.
-

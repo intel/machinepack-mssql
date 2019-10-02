@@ -1,41 +1,40 @@
 {
   "name": "machinepack-mssql",
-  "version": "1.0.0-rc.1",
-  "description": "Structured Node.js bindings for MSSQL.",
+  "version": "1.0.0-rc2",
+  "description": "Structured Node.js bindings for connecting and running queries against a MsSql database.",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
-    "fasttest": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
-    "fasttest-debug": "node --inspect-brk=9229 ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
+    "test": "node ./node_modules/mocha/bin/mocha test/integration --recursive",
+    "fasttest": "node ./node_modules/mocha/bin/mocha test/integration --recursive",
     "pretest": "npm run lint",
-    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0",
-    "docker": "docker-compose run adapter bash"
+    "lint": "node ./node_modules/eslint/bin/eslint *.js **/*.js",
+    "docker": "docker-compose run adapter bash",
+    "benchmark": "node ./node_modules/mocha/bin/mocha test/benchmarks --recursive"
   },
   "keywords": [
-    "mssql",
+    "postgresql",
     "driver",
     "waterline",
     "sails",
     "machines",
     "machinepack"
   ],
-  "author": "Dave Preston",
+  "author": "Dave Preston, Vijay Konnackal",
   "license": "MIT",
   "dependencies": {
-    "@sailshq/lodash": "^3.10.2",
-    "debug": "2.6.9",
-    "machine": "^15.0.0",
-    "mssql": "^4.3.2",
-    "waterline-sql-builder": "^1.0.0-2"
+    "debug": "2.2.0",
+    "@sailshq/lodash": "^3.10.4",
+    "machine": "^15.2.2",
+    "mssql": "^5.1.0",
+    "waterline-sql-builder": "^1.0.0"
   },
   "devDependencies": {
-    "bluebird": "^3.5.3",
-    "eslint": "4.19.1",
-    "mocha": "3.0.2",
-    "moment": "^2.24.0"
+    "eslint": "6.5.1",
+    "benchmark": "2.1.4",
+    "mocha": "^6.2.1"
   },
   "machinepack": {
-    "friendlyName": "MSSQL",
-    "machineDir": "lib/",
+    "friendlyName": "MsSql",
+    "machineDir": "machines/",
     "machines": [
       "get-connection",
       "release-connection",
@@ -54,5 +53,9 @@
       "queryable": "1.0",
       "transactional": "1.0"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vijaykonnackal/machinepack-mssql.git"
   }
 }
