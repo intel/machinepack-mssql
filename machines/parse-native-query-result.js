@@ -107,17 +107,17 @@ module.exports = {
         break;
 
       case 'avg':
-        var avg = _.first(inputs.nativeQueryResult.rows).avg;
+        var avg = _.first(_.values(_.first(inputs.nativeQueryResult.rows)));
         normalizedResult = Number(avg);
         break;
 
       case 'sum':
-        var sum = _.first(inputs.nativeQueryResult.rows).sum;
+        var sum = _.first(_.values(_.first(inputs.nativeQueryResult.rows)));
         normalizedResult = Number(sum);
         break;
 
       case 'count':
-        var count = _.first(inputs.nativeQueryResult.rows).count;
+        var count = _.first(_.values(_.first(inputs.nativeQueryResult.rows)));
         normalizedResult = Number(count);
         break;
 

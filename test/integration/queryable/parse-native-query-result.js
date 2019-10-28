@@ -28,7 +28,7 @@ describe('Queryable ::', function () {
       // Create a table to use for testing
       await Pack.sendNativeQuery({
         connection: connection,
-        nativeQuery: 'IF OBJECT_ID(\'dbo.people\') IS NULL BEGIN CREATE TABLE people(id int identity(1,1) primary key, name varchar(255)) END;'
+        nativeQuery: 'IF OBJECT_ID(\'dbo.people\') IS NULL BEGIN CREATE TABLE people(id int identity(1,1) primary key, name varchar(255), age int) END;'
       });
     });
 
@@ -130,6 +130,77 @@ describe('Queryable ::', function () {
       assert(report.result);
       assert(report.result.numRecordsDeleted);
       assert.equal(report.result.numRecordsDeleted, 1);
+    });
+
+    it('should normalize SUM query results from a native query', async function () {
+      let report = await Pack.sendNativeQuery({
+        connection: connection,
+        nativeQuery: 'INSERT INTO people (name, age) VALUES (\'John Smith\', 20); ' +
+          'INSERT INTO people (name, age) VALUES (\'Alice Smith\', 20); ' +
+          'INSERT INTO people (name) VALUES (\'Unknown\');'
+      });
+
+      report = await Pack.sendNativeQuery({
+        connection: connection,
+        nativeQuery: 'SELECT sum(age) FROM people WHERE name in (\'John Smith\', \'Alice Smith\', \'Unknown\');'
+      });
+
+      var result = report.result;
+
+      report = await Pack.parseNativeQueryResult({
+        queryType: 'sum',
+        nativeQueryResult: result
+      });
+
+      assert(report.result);
+      assert.equal(report.result, 40);
+    });
+
+    it('should normalize COUNT query results from a native query', async function () {
+      await Pack.sendNativeQuery({
+        connection: connection,
+        nativeQuery: 'INSERT INTO people (name, age) VALUES (\'John Smith_101\', 20); ' +
+          'INSERT INTO people (name, age) VALUES (\'Alice Smith_101\', 20); ' +
+          'INSERT INTO people (name) VALUES (\'Unknown_101\');'
+      });
+
+      let report = await Pack.sendNativeQuery({
+        connection: connection,
+        nativeQuery: 'SELECT count(*) FROM people WHERE name in (\'John Smith_101\', \'Alice Smith_101\');'
+      });
+
+      assert(report.result);
+
+      report = await Pack.parseNativeQueryResult({
+        queryType: 'count',
+        nativeQueryResult: report.result
+      });
+
+      assert(report.result);
+      assert.equal(report.result, 2);
+    });
+
+    it('should normalize AVG query results from a native query', async function () {
+      await Pack.sendNativeQuery({
+        connection: connection,
+        nativeQuery: 'INSERT INTO people (name, age) VALUES (\'John Smith_201\', 30); ' +
+          'INSERT INTO people (name, age) VALUES (\'Alice Smith_201\', 20);'
+      });
+
+      let report = await Pack.sendNativeQuery({
+        connection: connection,
+        nativeQuery: 'SELECT avg (age) FROM people WHERE name in (\'John Smith_201\', \'Alice Smith_201\');'
+      });
+
+      assert(report.result);
+
+      report = await Pack.parseNativeQueryResult({
+        queryType: 'avg',
+        nativeQueryResult: report.result
+      });
+
+      assert(report.result);
+      assert.equal(report.result, 25);
     });
   });
 });
