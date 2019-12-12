@@ -1,6 +1,6 @@
 {
   "name": "machinepack-mssql",
-  "version": "1.0.0-rc.1.1",
+  "version": "1.1.0",
   "description": "Structured Node.js bindings for MSSQL.",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
@@ -24,7 +24,7 @@
     "@sailshq/lodash": "^3.10.2",
     "debug": "2.6.9",
     "machine": "^15.0.0",
-    "mssql": "^4.3.2",
+    "mssql": "^6.0.1",
     "waterline-sql-builder": "^1.0.0-2"
   },
   "devDependencies": {
