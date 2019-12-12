@@ -91,7 +91,7 @@ describe('Transactional ::', function () {
     // * Run a query on connectionB and make sure the record doesn't exist
     // * Commit the transaction
     // * Run the select query again and the record should exist
-    it.only('should perform a transaction and make sure the results are commited correctly', function (done) {
+    it('should perform a transaction and make sure the results are commited correctly', function (done) {
       // Start a transaction on connection A
       Pack.beginTransaction({
         connection: connectionA,
