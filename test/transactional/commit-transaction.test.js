@@ -96,7 +96,7 @@ describe('Transactional ::', function () {
       Pack.beginTransaction({
         connection: connectionA,
         meta: {
-          isolationLevel: 'READ_UNCOMMITED',
+          isolationLevel: 'READ_UNCOMMITTED',
         }
       })
         .exec(function (err) {
