@@ -1,6 +1,6 @@
 {
   "name": "machinepack-mssql",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Structured Node.js bindings for MSSQL.",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha --recursive --timeout 10000",
