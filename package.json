@@ -25,13 +25,13 @@
     "debug": "2.6.9",
     "machine": "^15.0.0",
     "mssql": "^6.2.0",
-    "waterline-sql-builder": "^1.0.0-2"
+    "waterline-sql-builder": "github:davepreston/waterline-sql-builder"
   },
   "devDependencies": {
     "bluebird": "^3.5.3",
-    "eslint": "4.19.1",
-    "mocha": "^7.1.2",
-    "moment": "^2.24.0"
+    "eslint": "^8.33.0",
+    "mocha": "^10.2.0",
+    "moment": "^2.29.4"
   },
   "machinepack": {
     "friendlyName": "MSSQL",
